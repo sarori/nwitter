@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {authService, firebaseInstance} from 'fbase';
 
 const Auth = () => {
-    const  [email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [newAccount, setNewAccount] = useState(true);
     const [error, setError] = useState("");
@@ -25,7 +25,6 @@ const Auth = () => {
             } else {
                 data = await authService.signInWithEmailAndPassword(email, password);
             }
-            console.log(data);
         } catch(error) {
             setError(error.message);
         }
@@ -42,7 +41,6 @@ const Auth = () => {
             provider = new firebaseInstance.auth.GithubAuthProvider();
         }
         const data = await authService.signInWithPopup(provider);
-        console.log(data);
     };
     return (
         <div>
